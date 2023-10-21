@@ -1,0 +1,22 @@
+.main{
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    border: 5px solid  rgba(0,0,0,0.8);
+}
+.bottomBtnContainer{
+    bottom: 40px;
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+   
+}
+.buttonControl{
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid black;
+    width:100px;
+    cursor: pointer;
+ }
