@@ -1,0 +1,54 @@
+:root{
+  --text-color:#000;
+  --primary-background-color:#f9f9f9;
+  --green-color:#a2f795;
+
+  --color-primary-light: #FF3366;
+--color-primary-dark: #BA265D;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+html{
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+*, *::after, *::before{
+  box-sizing: inherit;
+}
+
+
+.main {
+ 
+  background-color: var(--green-color);
+  color: var(--text-color);
+  padding: 1rem;
+ 
+}
+.buttonContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem;
+    
+
+    &_buttonCounter{
+        font-size: 1.4rem;
+        font-weight: 400;
+        text-transform: uppercase;
+        border:none;
+        padding: 1rem;
+        border-radius: 100px;
+        color:#fff;
+        background-image: linear-gradient(to right, var(--color-primary-light), var(--color-primary-dark));
+        cursor: pointer;
+
+        &:hover{
+          background-image: linear-gradient(to left, var(--color-primary-light), var(--color-primary-dark));
+        }
+    }
+}
