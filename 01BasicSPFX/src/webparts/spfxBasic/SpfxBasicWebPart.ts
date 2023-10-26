@@ -13,9 +13,10 @@ import * as strings from 'SpfxBasicWebPartStrings';
 //import  BackgroundChanger from './components/backgroundChanger/BackgroundChanger';
 //import  PasswordGenerator from './components/PasswordGenerator/PasswordGenerator';
 //import MiniContext from './components/miniContext/MiniContext';
-import ToDoContextLocalStorage from './components/toDoContextLocalStorage/ToDoContextLocalStorage';
+//import ToDoContextLocalStorage from './components/toDoContextLocalStorage/ToDoContextLocalStorage';
 //import  CurrencyConverter from './components/currencyConverter/CurrencyConverter';
 import { ISpfxBasicProps } from './components/ISpfxBasicProps';
+import ToDoReactToolKit from './components/todoReactToolKit/TodoReactToolKit';
 
 export interface ISpfxBasicWebPartProps {
   description: string;
@@ -24,7 +25,7 @@ export interface ISpfxBasicWebPartProps {
 export default class SpfxBasicWebPart extends BaseClientSideWebPart<ISpfxBasicWebPartProps> {
   public render(): void {
     const element: React.ReactElement<ISpfxBasicProps> = React.createElement(
-      ToDoContextLocalStorage,
+      ToDoReactToolKit,
       {
         description: this.properties.description      
       }

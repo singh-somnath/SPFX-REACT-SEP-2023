@@ -1,0 +1,27 @@
+.toDoForm{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width:100%;
+    margin-bottom: 20px;
+    .toDoText{
+        flex: 0 0 60%;
+        padding: 3px 5px;
+        font-size: 12px;
+        background-color: #393636;
+        outline: none;
+        height: 25px;
+        color:#fff;
+
+    }
+
+    .toDoAdd{
+        flex: 0 0 20%;
+        padding: 3px 5px;
+        font-size: 10px;
+        background-color: #393636;
+        color:#fff;
+        height: 25px;
+        font-weight: bold;
+    }
+}
