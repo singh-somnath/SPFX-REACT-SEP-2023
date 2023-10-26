@@ -6,7 +6,6 @@ gulpfile.js
 release
 src
 temp
-
 tsconfig.json
 tslint.json
 
