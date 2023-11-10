@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "mega-blog-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/megaBlog/MegaBlogWebPart.js",
+          "manifest": "./src/webparts/megaBlog/MegaBlogWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "MegaBlogWebPartStrings": "lib/webparts/megaBlog/loc/{locale}.js"
+  }
+}

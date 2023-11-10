@@ -1,0 +1,19 @@
+.headerContainer{
+    display: flex;
+    flex-direction: row;
+    padding: 4px 8px;
+    background-color: #51504a;
+    border-bottom: 1px solid #e2cece;
+    
+
+    .leftContainer{
+        cursor: pointer;
+    }
+
+    .rightContainer{
+        margin-left: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
