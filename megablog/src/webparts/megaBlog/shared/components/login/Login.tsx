@@ -13,7 +13,7 @@ import {useNavigate} from 'react-router-dom';
 function Login(){
     const[loading,SetLoading] = useState(false);
     const[error,SetError] = useState(null);
-    const {register,handleSubmit} = useForm();
+    const {register,handleSubmit,formState:{errors}} = useForm();
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -47,8 +47,11 @@ function Login(){
                         className="" 
                         label="Email :" 
                         {...register("userEmail",{
-                        required:true
-                    })} />
+                            required:true
+                        })} 
+                        ariaInvalid={errors.userEmail ? true : false}
+                        ariaInvalidType =  {errors.userEmail ? errors.userEmail.type : null}
+                    />
                 </div>
                 <div>
                 <Input 
@@ -56,8 +59,11 @@ function Login(){
                         className="" 
                         label="Password :" 
                         {...register("userPassword",{
-                        required:true
-                    })} />
+                             required:true
+                        })} 
+                        ariaInvalid={errors.userPassword ? true : false}
+                        ariaInvalidType =  {errors.userPassword ? errors.userPassword.type : null}
+                />
                 </div>
                 <div>
                     <Button type="submit" className='' disabled={loading}>Login</Button>

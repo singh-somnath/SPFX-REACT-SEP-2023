@@ -11,6 +11,8 @@ function AllPost(){
      useEffect(()=>{
             getBlogs().then((items:IBlogDetail[]) =>{
                 SetPosts(items);
+            }).catch(()=>{
+                throw new Error("Blogs not able to found.");
             })
     },[])
 
@@ -19,7 +21,7 @@ function AllPost(){
              <div className={styles.allPostContainer}>
                 {
                     posts.map((post:IBlogDetail)=>(
-                       <PostCard id={post.Id} featureImage={post.File?.ServerRelativeUrl} title={post.Title} />
+                       <PostCard id={post.Id} featureImage={post.File?.ServerRelativeUrl} title={post.BlogTitle} />
                     ))
                 }
 

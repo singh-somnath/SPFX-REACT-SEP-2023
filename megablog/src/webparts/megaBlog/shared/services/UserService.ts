@@ -1,3 +1,4 @@
+import { ISiteUserInfo } from '@pnp/sp/site-users/types';
 import {IRequestParameters} from '../interface/IRequestParameters';
 import { IUserDetail,IUserSession } from '../interface/IUserDetail';
 import ContextUtil from '../utility/ContextUtil';
@@ -86,13 +87,13 @@ export async function getUSerSession(email:string){
     }
     
 }
-export async function removeUSerSession(email : string){
+export async function removeUSerSession(session : IUserSession){
     const contextUtil = ContextUtil.getInstance();
     let result : any ;
     try{
         const request:IRequestParameters = {
             title :"MegaBlogUserSession",
-            filterOptions:`UserEmail eq '${email}'`,
+            filterOptions:`((UserEmail eq '${session.UserEmail}') and (SessionString eq '${session.SessionString}'))`,
             maxCount:1
         };
         const item :IUserSession[] = await contextUtil.getListItem(request);
@@ -108,4 +109,17 @@ export async function removeUSerSession(email : string){
         throw error;
     }
    
+}
+
+export async function getAllSiteUsers(){
+    const contextUtil = ContextUtil.getInstance();  
+    try{       
+        const result :ISiteUserInfo[] = await contextUtil.getAllSiteUSers();       
+        return result;   
+
+    }catch(error){
+        throw error;
+    }
+   
+
 }

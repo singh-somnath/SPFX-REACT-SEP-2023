@@ -1,0 +1,40 @@
+.postContainer{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    position: relative;
+    ///background-color:  #f4fdf5;
+    &-buttonContainer{
+        position: absolute;
+        top: 30px;
+        right: 0;
+        background-color: #ffffff00;
+        padding: 10px;
+        display: flex;
+        justify-content: flex-end;
+        
+    }
+    &-imageContainer{
+        width: 100%;
+        height: 600px;
+
+        &-image{
+            display: block;
+            width: 100%;
+            max-height: 600px;
+        }
+    }
+    &-details{
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        &-title,&-user{
+            font-size: 14px;
+            font-weight: bold;
+        }       
+    }
+    &-content{
+        padding: 10px;
+        font-size: 14px;
+    }
+}

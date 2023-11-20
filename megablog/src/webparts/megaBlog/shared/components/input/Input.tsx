@@ -1,30 +1,32 @@
 import * as React  from 'react';
-import {} from 'react';
+import styles from './input.module.scss';
+import { useId } from '@fluentui/react-hooks'
 
-const Input = (props:any,ref:any) =>{
+const Input = (props:any,ref: React.LegacyRef<HTMLInputElement>) =>{
 
     const {
-        type,
-        className,
+        type,        
         required,
         readOnly,
-        label       
+        label,        
+        ariaInvalid,
+        name  
     } = props
 
-    const inputId = "input-element"  + Date.now();
+    const inputId = useId();
 
     return (
-        <div>
-                {label && <label className='' htmlFor={inputId}>{label}</label>}
+        <div className={styles.inputContainer} >
+                {label && <label  htmlFor={inputId}>{label}</label>}
                 <input 
-                    type={type} 
-                    className={`${className}`} 
+                    type={type}                     
                     ref={ref} 
                     required={required} 
                     readOnly={readOnly} 
                     id={inputId}    
                     {...props}                
                 />
+                {ariaInvalid && <div className={styles['inputContainer-error']}>* {String(name).toUpperCase()} is required.</div>}
         </div>
          
     )

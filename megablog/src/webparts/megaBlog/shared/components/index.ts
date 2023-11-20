@@ -11,6 +11,8 @@ import PostForm from "./postForm/PostForm";
 import Logo from "./logo/Logo";
 import Header from "./header/Header";
 import Footer from "./footer/Footer";
+import DatePickerComponent from "./datePicker/DatePickerComponent";
+import ComboBoxComponent from './comboBox/ComboBoxComponent';
 
 export {
     Button,
@@ -25,5 +27,7 @@ export {
     PostForm,
     Logo,
     Header,
-    Footer
+    Footer,
+    DatePickerComponent,
+    ComboBoxComponent
 }

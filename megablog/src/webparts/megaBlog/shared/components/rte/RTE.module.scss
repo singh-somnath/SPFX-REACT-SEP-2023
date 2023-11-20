@@ -1,0 +1,27 @@
+.RTEContainer{
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    justify-content: space-between;
+
+    & > label{
+        text-transform: uppercase;
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+    & > Editor {
+        padding: 10px;
+        border-radius: 10px;      
+        font-size: 14px;
+
+    }
+    &-error{
+        color: red;
+        font-size: 14px;
+        font-weight: 500;
+        display: block;
+        margin-top: 10px;
+        text-transform: capitalize;        
+    }
+}

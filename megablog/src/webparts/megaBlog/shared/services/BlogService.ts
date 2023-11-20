@@ -2,14 +2,14 @@ import { IBlogDetail } from '../interface/IBlogDetail';
 import {IRequestParameters,IFileRequestParams} from '../interface/IRequestParameters';
 import ContextUtil from '../utility/ContextUtil';
 
-export async function getBlogs(blogId:number = -1){
+export async function getBlogs(blogId:number = -1):Promise<IBlogDetail[]|IBlogDetail>{
     const contextUtil = ContextUtil.getInstance();
     try{
 
         const request:IRequestParameters = {
             title :"MegaBlogArticle",
-            selectOptions:"Id,Title,BlogTitle,BlogContent,BlogStatus,UserEmail,File/ServerRelativeUrl,File/Name",
-            expandOptions:"File"
+            selectOptions:"Id,BlogTitle,BlogSlug,BlogContent,BlogStatus,UserEmail,File/ServerRelativeUrl,File/Name,BlogPerson/Title,BlogPerson/ID,BlogDate",
+            expandOptions:"File,BlogPerson"
         };
         if(blogId != -1)
             request.itemId = blogId;

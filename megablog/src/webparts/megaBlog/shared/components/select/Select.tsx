@@ -1,27 +1,30 @@
 import * as React  from 'react';
-import {} from 'react';
+import styles from './select.module.scss';
+import { useId } from '@fluentui/react-hooks';
 
 const Select = (props:any,ref:any) =>{
 
     const {
         options,
-        className,
-        label       
+        label,       
+        ariaInvalid,        
+        name
     } = props
 
-    const inputId = "select-element"  + Date.now();
+    const inputId = useId();
 
     return (
-        <div>
+        <div className={styles.selectContainer}>
                 {label && <label className='' htmlFor={inputId}>{label}</label>}
-                 <select id={inputId} className={`${className}`} ref={ref} {...props} >
+                 <select id={inputId}  ref={ref} {...props} >
                  {options.map((item:string)=>(
                      <option key={item} value={item}>{item}</option>
                   ))}
                  </select>
+                 {ariaInvalid && <div className={styles['selectContainer-error']}>* {String(name).toUpperCase()} is required.</div>}
         </div>
          
     )
 }
 
-export default React.forwardRef(Select);
+export default React.forwardRef(Select); 

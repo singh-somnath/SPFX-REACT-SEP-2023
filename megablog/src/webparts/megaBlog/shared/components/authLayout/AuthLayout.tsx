@@ -34,7 +34,7 @@ function AuthLayout({children,authentication=true}:IAuthLayoutType){
                 if(currentUserSession)
                 {
                     if(currentUser.SessionString.toLowerCase() === currentUserSession.SessionString.toLowerCase())
-                            dispatch(logIn(currentUserSession));   
+                                      dispatch(logIn(currentUserSession));   
                 }
                              
             }
@@ -43,7 +43,7 @@ function AuthLayout({children,authentication=true}:IAuthLayoutType){
 
         sessionCheck();
 
-    },[dispatch])
+    },[dispatch,navigate,isSessionChecked])
 
     useEffect(()=>{
         if(isSessionChecked){

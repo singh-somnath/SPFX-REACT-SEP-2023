@@ -1,21 +1,33 @@
-export class IBlogDetail{
+import { IFileInfo, ILookUpType } from "./IRequestParameters";
+
+export interface IBlogDetail{
     Id?:number;
-    Title:string;
     BlogTitle:string;
+    BlogSlug:string;
     BlogContent:string;
     BlogStatus:string;
-    UserEmail:string;
-    File?:IFileInfo
-
+    UserEmail?:string;
+    File?:IFileInfo;
+    FileLeafRef?:string;
+    BlogDate?:string;
+    BlogPerson?:ILookUpType;   
 }
 
-interface IFileInfo{
-    ServerRelativeUrl:string;
-    Name:string;
+export interface IBlogDetailPostItem{   
+    BlogTitle:string;
+    BlogSlug:string;
+    BlogContent:string;
+    BlogStatus:string;
+    UserEmail:string;   
+    FileLeafRef:string;
+    BlogDate?:string;
+    BlogPersonId?:number;   
 }
+
 
 export interface IBlogFeatureImage{  
     size:number;
     fileContent:any;
     name:string;
 }
+

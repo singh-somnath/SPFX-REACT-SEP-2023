@@ -26,7 +26,7 @@ class AuthService{
         try{
              const validUSer : IUserDetail[] = await validateUser(userEmail,userPassword);
 
-             if(validUSer){               
+             if(validUSer.length){               
                 const session = await createUSerSession(validUSer[0]);
                 localStorage.setItem("BlogUserSession",JSON.stringify(session));
                 return session;
@@ -39,9 +39,9 @@ class AuthService{
 
     }
 
-    public async logOut(userEmail:string){
+    public async logOut(currentSession:IUserSession){
         try{                           
-                const session = await removeUSerSession(userEmail);
+                const session = await removeUSerSession(currentSession);
                 localStorage.removeItem("BlogUserSession");
                 if(session)
                     return true;          
@@ -56,16 +56,15 @@ class AuthService{
     }
 
     public async getCurrentUser() : Promise<IUserSession | null>{
-        let currentUSer : IUserSession  ;
+        let currentSession : IUserSession  ;
         try{
              const userSession = localStorage.getItem("BlogUserSession");
            
              if(userSession){
-                    currentUSer = JSON.parse(userSession);
-                     return currentUSer;
+                     currentSession = JSON.parse(userSession);
+                     return currentSession;
              }   
-             
-              return null;
+             return null;
             
         }catch(error)
         {

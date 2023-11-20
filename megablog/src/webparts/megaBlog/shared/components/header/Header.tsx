@@ -6,11 +6,14 @@ import { authService } from '../../services/AuthService';
 import { useSelector } from 'react-redux';
 import { IStateType } from '../../store/authSlice';
 import {useNavigate} from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import {logOut} from '../../store/authSlice';
 
 
 const Header = () =>{
     const authStatus = useSelector((state:IStateType) => state.status);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const navItems = [
         {
@@ -40,10 +43,14 @@ const Header = () =>{
         }
     ];
 
-    const handleLogout = async() =>{
-        const currentUser  = await authService.getCurrentUser();
-        if(currentUser){
-            const logOut = await authService.logOut(currentUser.UserEmail);
+    const handleLogout = async(e:any) =>{
+        e.preventDefault();
+        const currentUserSession  = await authService.getCurrentUser();
+        if(currentUserSession){
+            const result = await authService.logOut(currentUserSession);
+            if(result){
+                dispatch(logOut());
+            }
             console.log(logOut);
         }
             
@@ -62,7 +69,8 @@ const Header = () =>{
                             ))
                         }
                         {
-                            authStatus ? <Button onClickHandle={()=> handleLogout}>Logout</Button> : null
+                            authStatus ? <Button onClickHandle={(e:any)=> {handleLogout(e)}}>Logout</Button> : null
+                            
                         }
 
                     </div>

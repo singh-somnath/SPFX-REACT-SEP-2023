@@ -6,7 +6,9 @@ import  "@pnp/sp/items";
 import "@pnp/sp/items/get-all";
 import "@pnp/sp/files";
 import "@pnp/sp/folders";
+import "@pnp/sp/site-users/web";
 import {IRequestParameters,IFileRequestParams} from '../interface/IRequestParameters';
+import { ISiteUserInfo } from "@pnp/sp/site-users/types";
 
 export default class ContextUtil{
     private _sp : SPFI;
@@ -65,7 +67,12 @@ export default class ContextUtil{
         }        
 
         try{
-            response = await request.getAll();
+
+            if(requestParams.itemId)
+                response = await request();
+            else                    
+                response = await request.getAll();
+
         }catch(error){
             console.log(error);
             throw error;
@@ -150,7 +157,7 @@ export default class ContextUtil{
 
         return response;        
     }
-
+    
     public async uploadFileByServerRelativeUrl(requestParams:IFileRequestParams){
         let request:any;
         let response:any;
@@ -158,7 +165,7 @@ export default class ContextUtil{
         request = this._sp.web.getFolderByServerRelativePath("MegaBlogArticle").files;        
 
         if(requestParams.fileSize && requestParams.fileSize < 10485760){
-            request = request.addUsingPath(requestParams.fileName,requestParams.fileContent,true);
+            request = request.addUsingPath(requestParams.fileName,requestParams.fileContent,{ Overwrite: true });
 
         }else{
             request = request.addChunked(requestParams.fileName,requestParams.fileContent,(data:any)=>{console.log(data)},true)
@@ -172,5 +179,17 @@ export default class ContextUtil{
             throw error;
         }
         return response;
+    }
+
+    public async getAllSiteUSers(){
+        let response:ISiteUserInfo[];        
+        try{
+            response = (await this._sp.web.siteUsers()).filter((item) => (item.UserPrincipalName !== null));
+        }catch(error){
+            console.log(error);
+            throw error;
+        }
+
+        return response;        
     }
 }
